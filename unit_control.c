@@ -9,9 +9,9 @@ char flags = 0;
 void update_flags(unsigned char v) {
   flags = 0;
 
-  if (v & 0)    flags |= 8;
-  if (v & 0x80) flags |= 4;
-  if (v > 255)  flags |= 2;
+  if (v == 0)   flags |= ZF;
+  if (v & 0x80) flags |= NF;
+  if (v > 255)  flags |= CF;
 }
 
 void add(unsigned char *reg, unsigned char *n) {
@@ -28,34 +28,9 @@ void decode(unsigned char *inst_pointer, unsigned char *inst) {
   inst[0] = inst_pointer[0];
   pointer_counter++;
 
-  switch (inst[0]) {
-    case LOAD_A:
-    case LOAD_B:
-    case LOAD_C:
-    case LOAD_D:
-    case STORE_A:
-    case STORE_B:
-    case STORE_C:
-    case STORE_D:
-    case ADD_A:
-    case ADD_B:
-    case ADD_C:
-    case ADD_D:
-    case SUB_A:
-    case SUB_B:
-    case SUB_C:
-    case SUB_D:
-    case CMP_A:
-    case CMP_B:
-    case CMP_C:
-    case CMP_D:
-    case JE:
-    case JNE:
-    case JA:
-    case JB:
-      inst[1] = inst_pointer[1];
-      pointer_counter++;
-      break;
+  if (inst[0] != HALF && inst[0] != SYSCALL) {
+    inst[1] = inst_pointer[1];
+    pointer_counter++;
   }
 }
 
