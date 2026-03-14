@@ -7,15 +7,15 @@ void loadASM(const char *path);
 
 int main(int argc, char const *argv[])
 {
-    loadASM(argv[1]);
+    //loadASM(argv[1]);
 
     cpuRun();
 
     printf("\nRegisters\n");
-    printf("|AX: %.2X |BX: %.2X |CX: %.2X |DX: %.2X |SP: %2X |\n", ax, bx, cx, dx, sp);
+    printf("|AX: %.4X |BX: %.4X |CX: %.4X |DX: %.4X |SP: %.4X |IP: %.4X|\n", ax, bx, cx, dx, sp, ip);
 
     printf("Flags\n");
-    printf("|ZF: %.2X |NF: %.2X |CF: %.2X |\n", zeroFlag, negativeFlag, carryFlag);
+    printf("|ZF: %d |NF: %d |CF: %d |\n", zeroFlag, negativeFlag, carryFlag);
 
     return 0;
 }

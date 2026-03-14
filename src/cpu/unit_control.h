@@ -9,7 +9,7 @@
 #define STORE_B 0x5
 #define STORE_C 0x6
 #define STORE_D 0x7
-
+#define PUSH    0x8
 
 #define HALF    0xA
 #define SYSCALL 0xB
@@ -33,6 +33,14 @@
 #define LEA_B   0x1D
 #define LEA_C   0x1E
 #define LEA_D   0x1F
+#define PUSH_A  0x20
+#define PUSH_B  0x21
+#define PUSH_C  0x22
+#define PUSH_D  0x23
+#define POP_A   0x24
+#define POP_B   0x25
+#define POP_C   0x26
+#define POP_D   0x27
 
 unsigned char *fetch(unsigned char *pc);
 void decode(unsigned char *inst_pointer, unsigned char *inst);
