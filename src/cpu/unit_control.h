@@ -29,21 +29,10 @@
 #define JNE     0x19
 #define JA      0x1A
 #define JB      0x1B
-
-#define ZF 0x8
-#define NF 0x4
-#define CF 0x2
-
-//Registers
-extern unsigned char regA;
-extern unsigned char regB;
-extern unsigned char regC;
-extern unsigned char regD;
-
-extern unsigned char pointer_counter;
-
-//Flags
-extern char flags;
+#define LEA_A   0x1C
+#define LEA_B   0x1D
+#define LEA_C   0x1E
+#define LEA_D   0x1F
 
 unsigned char *fetch(unsigned char *pc);
 void decode(unsigned char *inst_pointer, unsigned char *inst);
